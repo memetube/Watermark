@@ -1,0 +1,46 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#navbar {
+  height: 1.3cm;
+  width: 100%;
+  background-color: yellow;
+  position: absolute;
+  top: 0%;
+}
+
+#navbar img {
+  height: 1.3cm;
+  float: right;
+}
+
+#upload_div {
+  top: 2cm;
+  position: absolute;
+}
+
+label {
+  background-color: red;
+  border: solid black;
+}
+
+canvas {
+  height: 90vmin;
+  width: 90vmin;
+  position: absolute;
+  top: 35vmin;
+  object-fit: contain;
+}
+
+#download_button {
+  top: 130vmin;
+  position: absolute;
+}
