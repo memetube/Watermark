@@ -47,5 +47,7 @@ function add_watermark() {
 function download() {
   console.log(file_name);
   var url = canvas.toDataURL();
-  console.log(url);
+  var dowload_link = document.createElement("a");
+  dowload_link.href = url;
+  dowload_link.click();
 }
