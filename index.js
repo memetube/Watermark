@@ -27,14 +27,17 @@ function add_watermark() {
     meme_image.src = url;
     logo.height = 100;
     meme_image.onload = () => {
-      canvas.height = meme_image.height + 65;
-      canvas.width = meme_image.width;
+      canvas.height = meme_image.height + 85;
+      canvas.width = meme_image.width + 40 ;
       var ctx = canvas.getContext("2d");
       ctx.fillStyle = "yellow";
       ctx.fillRect(0, 0, canvas.width, 65);
+      ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
+      ctx.fillRect(0, 0, 20, canvas.height);
+      ctx.fillRect(canvas.width - 20, 0, 20, canvas.height);
       console.log(logo.height);
       ctx.drawImage(logo, canvas.width - logo.width, 0);
-      ctx.drawImage(meme_image, 0, 65);
+      ctx.drawImage(meme_image, 20, 65);
       ctx.fillStyle = "black";
       ctx.font = "20px Arial";
       ctx.fillText("@memetube.co", 10, 50);
