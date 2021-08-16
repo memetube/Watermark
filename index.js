@@ -4,6 +4,7 @@ var file,
   meme_image,
   canvas,
   logo,
+  square_logo,
   download_button,
   file_name = null;
 
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   image_input.addEventListener("input", add_watermark);
   canvas = document.querySelector("canvas");
   logo = document.getElementById("logo");
+  square_logo = document.getElementById("square_logo")
   download_button = document.getElementById("download_button");
   download_button.onclick = download;
 });
@@ -35,9 +37,10 @@ function add_watermark() {
       ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
       ctx.fillRect(0, 0, 20, canvas.height);
       ctx.fillRect(canvas.width - 20, 0, 20, canvas.height);
-      console.log(logo.height);
       ctx.drawImage(logo, canvas.width - logo.width, 0);
       ctx.drawImage(meme_image, 20, 65);
+      square_logo.style.filter = "blur:10"
+      ctx.drawImage(square_logo,  canvas.width-100, canvas.height - 100);
       ctx.fillStyle = "black";
       ctx.font = "20px Arial";
       ctx.fillText("@memetube.co", 10, 50);
