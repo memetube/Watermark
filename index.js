@@ -6,19 +6,38 @@ var file,
   logo,
   square_logo,
   download_button,
-  file_name = null;
+  file_name,
+  category,
+  watermark_text = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   image_input = document.getElementById("image_input");
   image_input.addEventListener("input", add_watermark);
   canvas = document.querySelector("canvas");
   logo = document.getElementById("logo");
-  square_logo = document.getElementById("square_logo")
   download_button = document.getElementById("download_button");
   download_button.onclick = download;
+  category_div = document.querySelector("#category")
+  category_div.querySelectorAll('button').forEach(element => {
+    element.addEventListener('click', () => {
+      category = element.id
+    })
+  });
 });
 
 function add_watermark() {
+  if (category == null) {
+    alert("Please Select a Category")
+    return
+  }
+  if (category == "memetube") {
+    square_logo = document.getElementById("square_logo")
+    watermark_text = '@memetube'
+  }
+  else {
+    square_logo = document.getElementById("adult_square_logo")
+    watermark_text = '@memetubeadult.co'
+  }
   var file = image_input.files[0];
   file_name = image_input.files[0].name;
   var reader = new FileReader();
@@ -30,7 +49,7 @@ function add_watermark() {
     logo.height = 100;
     meme_image.onload = () => {
       canvas.height = meme_image.height + 85;
-      canvas.width = meme_image.width + 40 ;
+      canvas.width = meme_image.width + 40;
       var ctx = canvas.getContext("2d");
       ctx.fillStyle = "yellow";
       ctx.fillRect(0, 0, canvas.width, 65);
@@ -40,10 +59,10 @@ function add_watermark() {
       ctx.drawImage(logo, canvas.width - logo.width, 0);
       ctx.drawImage(meme_image, 20, 65);
       square_logo.style.filter = "blur:10"
-      ctx.drawImage(square_logo,  canvas.width-100, canvas.height - 100);
+      ctx.drawImage(square_logo, canvas.width - 100, canvas.height - 100);
       ctx.fillStyle = "black";
       ctx.font = "20px Arial";
-      ctx.fillText("@memetube.co", 10, 50);
+      ctx.fillText(watermark_text, 10, 50);
       canvas.style.display = "block";
       download_button.style.display = "block";
     };

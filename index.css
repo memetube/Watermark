@@ -44,3 +44,12 @@ canvas {
   top: 130vmin;
   position: absolute;
 }
+
+
+#category{
+  margin-top:0.3cm;
+}
+
+#category button{
+  width:49%
+}
